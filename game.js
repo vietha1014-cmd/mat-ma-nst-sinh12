@@ -9,7 +9,7 @@ function playSound(kind='click'){
   const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
   audioCtx=audioCtx||new Ctx();if(audioCtx.state==='suspended')audioCtx.resume();
   const notes=kind==='correct'?[659.25,783.99,987.77]:kind==='wrong'?[370,294]:kind==='win'?[523,659,784,1047]:[720];
-  const duration=kind==='click'?.045:.15,volume=kind==='click'?.027:.075;
+  const duration=kind==='click'?.07:.22,volume=kind==='click'?.10:.20;
   const now=audioCtx.currentTime;
   notes.forEach((hz,i)=>{const t=now+i*(kind==='click'?0:.115),osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
    osc.type=kind==='wrong'?'triangle':'sine';osc.frequency.setValueAtTime(hz,t);
@@ -21,7 +21,7 @@ function playSound(kind='click'){
 }
 // Âm click cho các nút và ô chọn, kể cả điều khiển được tạo động.
 document.addEventListener('click',e=>{
- if(e.target.closest('button') && !e.target.closest('#soundBtn'))playSound('click');
+ if(e.target.closest('button') && !e.target.closest('#soundBtn') && !e.target.closest('#interaction .option'))playSound('click');
 },true);
 document.addEventListener('change',e=>{
  if(e.target.matches('#interaction select'))playSound('click');
@@ -48,8 +48,8 @@ let q=shuffle(QUESTIONS.filter(x=>x.level===level)).slice(0,LEVELS[level].n);ses
 function updateHUD(){let s=session;$('levelTitle').textContent=LEVELS[s.level].title;$('clock').textContent=`${String(Math.floor(s.remaining/60)).padStart(2,'0')}:${String(s.remaining%60).padStart(2,'0')}`;$('lives').textContent='🧬'.repeat(s.lives)+'·'.repeat(5-s.lives);$('count').textContent=`Nhiệm vụ ${s.index+1}/${s.questions.length} · Lượt trả lời ${Math.min(2,s.attempts+1)}/2`;$('bar').style.width=(s.index/s.questions.length*100)+'%';$('stage').textContent=STAGES[Math.min(4,Math.floor(s.index/s.questions.length*5))];renderStageTrack()}
 function setSelected(el){document.querySelectorAll('.option').forEach(e=>e.classList.remove('selected'));el.classList.add('selected')}
 function diagramSVG(two=false){return `<svg viewBox="0 0 400 300" role="img" aria-label="Sơ đồ minh họa nhiễm sắc thể"><defs><linearGradient id="chr" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#78e1eb"/><stop offset="1" stop-color="#3189b4"/></linearGradient></defs>${two?'<g transform="translate(-65 0)">':''}<path d="M112 35 Q127 12 150 43 L220 128 L280 42 Q300 20 313 40 Q330 61 305 88 L239 151 L306 240 Q330 269 304 282 Q285 289 267 260 L215 181 L163 260 Q145 287 122 275 Q99 261 118 238 L187 151 L120 88 Q96 61 112 35Z" fill="url(#chr)" stroke="#c5faff" stroke-width="3"/><path d="M301 35 Q280 20 263 46 L213 125 L159 46 Q139 20 120 42" fill="none" stroke="#164f80" stroke-width="8" opacity=".6"/><ellipse cx="215" cy="151" rx="32" ry="17" fill="#e9ad61" stroke="#fff1b7" stroke-width="3"/>${two?'</g><g transform="translate(115 0) scale(.7 1)"><path d="M112 35 L215 145 L300 35 M112 265 L215 155 L300 265" stroke="#a5e9ff" stroke-width="27" stroke-linecap="round" fill="none"/><circle cx="215" cy="150" r="18" fill="#e9ad61"/></g>':''}</svg>`}
-function renderQuestion(){locked=false;let s=session,q=s.questions[s.index];s.attempts=0;s.seen.push(q.id);chosen=null;answerState=null;$('feedback').innerHTML='';$('check').classList.remove('hidden');$('next').classList.add('hidden');$('qText').textContent=q.prompt;$('source').textContent=q.source;updateHUD();let box=$('interaction');box.innerHTML='';
-if(q.type==='mc'||q.type==='visualchoice'){let ix=shuffle(q.options.map((_,i)=>i));if(q.type==='visualchoice')box.innerHTML='<div class="notice small">Các phương án mô tả sơ đồ; chọn mô tả chính xác.</div>';ix.forEach(i=>{let b=document.createElement('button');b.className='option';b.dataset.letter='ABCD'[ix.indexOf(i)]||'';b.dataset.answerIndex=String(i);b.textContent=q.options[i];b.onclick=()=>{chosen=i;setSelected(b)};box.appendChild(b)})}
+function renderQuestion(){locked=false;let s=session,q=s.questions[s.index];s.attempts=0;s.seen.push(q.id);chosen=null;answerState=null;$('feedback').innerHTML='';$('check').classList.toggle('hidden',q.type==='mc'||q.type==='visualchoice');$('next').classList.add('hidden');$('qText').textContent=q.prompt;$('source').textContent=q.source;updateHUD();let box=$('interaction');box.innerHTML='';
+if(q.type==='mc'||q.type==='visualchoice'){let ix=shuffle(q.options.map((_,i)=>i));if(q.type==='visualchoice')box.innerHTML='<div class="notice small">Các phương án mô tả sơ đồ; chọn mô tả chính xác.</div>';ix.forEach(i=>{let b=document.createElement('button');b.className='option';b.dataset.letter='ABCD'[ix.indexOf(i)]||'';b.dataset.answerIndex=String(i);b.textContent=q.options[i];b.onclick=()=>{if(locked||b.disabled)return;chosen=i;setSelected(b);gradeAnswer()};box.appendChild(b)})}
 if(q.type==='short'){box.innerHTML='<p class="muted">Nhập câu trả lời dạng số:</p><input id="shortAnswer" inputmode="numeric" placeholder="Nhập đáp án">'}
 if(q.type==='tf'){answerState=Array(q.statements.length).fill(null);q.statements.forEach((t,i)=>{let r=document.createElement('div');r.className='matchrow';r.innerHTML=`<span>${esc('abcd'[i]+') '+t)}</span><select aria-label="Nhận định ${i+1}"><option value="">Chọn đúng/sai</option><option value="1">Đúng</option><option value="0">Sai</option></select>`;r.querySelector('select').onchange=e=>answerState[i]=e.target.value===''?null:Number(e.target.value);box.appendChild(r)})}
 if(q.type==='match'){answerState=Array(q.pairs.length).fill(null);let opts=shuffle(q.pairs.map((p,i)=>({text:p[1],i})));q.pairs.forEach((p,i)=>{let r=document.createElement('div');r.className='matchrow';r.innerHTML=`<strong>${esc(p[0])}</strong><select aria-label="Ghép ${esc(p[0])}"><option value="">Chọn nội dung ghép</option>${opts.map(o=>`<option value="${o.i}">${esc(o.text)}</option>`).join('')}</select>`;r.querySelector('select').onchange=e=>answerState[i]=e.target.value===''?null:Number(e.target.value);box.appendChild(r)})}
@@ -73,7 +73,7 @@ function markOptions(q,finished){
 function setResponseFeedback(html,warning){
  $('feedback').innerHTML=`<div class="feedback ${warning?'warning':''}" role="status" aria-live="polite">${html}</div>`;
 }
-$('check').onclick=()=>{
+function gradeAnswer(){
  if(!session||locked)return;
  const s=session,q=s.questions[s.index];
  if(!responseValid(q)){alert('Hãy hoàn thành câu trả lời trước khi kiểm tra.');return}
@@ -104,7 +104,8 @@ $('check').onclick=()=>{
  if(locked){$('check').classList.add('hidden');$('next').classList.remove('hidden')}
  updateHUD();
  $('next').textContent=s.lives===0?'Xem kết quả →':s.index===s.questions.length-1?'Hoàn thành →':'Tiếp tục →';
-};
+}
+$('check').onclick=gradeAnswer;
 $('next').onclick=()=>{if(!session)return;if(session.lives===0)return finish(false,'Hết DNA sinh mệnh');session.index++;if(session.index>=session.questions.length){let passed=session.lives>=REQUIRED_DNA[session.level];return finish(passed,passed?'Hoàn thành cấp độ!':'Chưa đạt điều kiện mở khóa')}renderQuestion()};
 function points(s){return s.correct}
 function finish(passed,reason){if(!session)return;if(passed)playSound('win');clearInterval(timer);locked=true;let s=session;let score=points(s),data=saved(),old=data[s.level]||{};let bestRemaining=Math.max(legacyRemaining(old),passed?s.lives:0);data[s.level]={best:Math.max(old.best||0,score),passed:!!old.passed||passed,bestRemaining};persist(data);$('game').classList.add('hidden');$('end').classList.remove('hidden');$('endTitle').textContent=reason;let next=s.level==='D'?'Trung bình':s.level==='M'?'Khó':null;let message=passed?(next?'Đã mở khóa cấp '+next+'.':'Chúc mừng! Bạn đã chinh phục cấp Khó.'):'Bạn cần hoàn thành tất cả câu hỏi và còn ít nhất '+REQUIRED_DNA[s.level]+' DNA sinh mệnh.';$('endBody').innerHTML=`<p style="font-size:30px">${'🧬'.repeat(s.lives)}${s.lives?'':'🔒'}</p><p>${esc(s.name)} · ${esc(s.cls)}</p><p>Đúng ${s.correct}/${s.questions.length} · Còn ${s.lives}/5 DNA sinh mệnh · Điểm ${score}</p><p class="muted">${message}</p><div id="syncStatus" class="notice small">Đang kiểm tra kết nối Google Sheets…</div>`;$('retry').onclick=()=>start(s.level);syncScore({nonce:(globalThis.crypto?.randomUUID?.()||String(Date.now())+'-'+Math.random().toString(36).slice(2)),name:s.name,cls:s.cls,level:s.level,score,stars:0,passed,correct:s.correct,total:s.questions.length,remaining:s.lives,finishedAt:new Date().toISOString()})}
