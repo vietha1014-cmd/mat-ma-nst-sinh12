@@ -64,7 +64,7 @@ function markOptions(q,finished){
  if(q.type!=='mc'&&q.type!=='visualchoice')return;
  document.querySelectorAll('#interaction .option').forEach(b=>{
   const i=Number(b.dataset.answerIndex);
-  b.classList.remove('answer-correct','answer-wrong');
+  if(!b.disabled)b.classList.remove('answer-correct','answer-wrong');
   if(finished&&i===q.answer)b.classList.add('answer-correct');
   else if(i===chosen&&i!==q.answer)b.classList.add('answer-wrong');
   if(finished)b.disabled=true;
@@ -80,19 +80,19 @@ $('check').onclick=()=>{
  const correct=isCorrect(q);s.attempts++;
  if(correct){
   playSound('correct');s.correct++;locked=true;markOptions(q,true);
-  setResponseFeedback(`<strong>✓ Chính xác!</strong><p>${esc(q.explain)}</p>`,false);
+  setResponseFeedback(`<strong>✓ Chính xác!</strong><p><b>Giải thích:</b> ${esc(q.explain)}</p>`,false);
  }else{
   playSound('wrong');s.lives=Math.max(0,s.lives-1);
   const finished=s.attempts>=2||s.lives===0;
   markOptions(q,finished);
   if(finished){
    locked=true;s.wrong.push(q.id);
-   setResponseFeedback(`<strong>Chưa đúng. ${s.lives===0?'Bạn đã hết DNA sinh mệnh.':'Bạn đã dùng hết 2 lượt trả lời.'}</strong><p><b>Đáp án đúng:</b> ${esc(showCorrect(q))}</p><p>${esc(q.explain)}</p>`,true);
+   setResponseFeedback(`<strong>Chưa đúng. ${s.lives===0?'Bạn đã hết DNA sinh mệnh.':'Bạn đã dùng hết 2 lượt trả lời.'}</strong><p><b>Đáp án đúng:</b> ${esc(showCorrect(q))}</p><p><b>Giải thích:</b> ${esc(q.explain)}</p>`,true);
   }else{
-   setResponseFeedback('<strong>Chưa đúng, bạn mất 1 DNA sinh mệnh.</strong><p>Hãy thử chọn lại (còn 1 lần).</p>',true);
-   // Không giữ đáp án sai được chọn khi thử lại.
+   setResponseFeedback('<strong>Chưa đúng, bạn mất 1 DNA sinh mệnh. Hãy thử chọn lại (còn 1 lần).</strong>',true);
+   // Giữ màu đỏ của đáp án sai lần đầu, nhưng cho phép chọn đáp án khác.
    if(q.type==='mc'||q.type==='visualchoice'){
-    document.querySelectorAll('#interaction .option').forEach(b=>{b.classList.remove('selected');if(Number(b.dataset.answerIndex)===chosen)b.disabled=true});
+    document.querySelectorAll('#interaction .option').forEach(b=>{b.classList.remove('selected');if(Number(b.dataset.answerIndex)===chosen){b.disabled=true;b.classList.add('answer-wrong')}});
     chosen=null;
    }else if(q.type==='short'){$('shortAnswer').value='';}
    else if(q.type==='tf'||q.type==='match'||q.type==='classify'){
