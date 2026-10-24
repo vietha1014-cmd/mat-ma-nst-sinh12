@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id), LEVELS={D:{title:'Dễ',n:8,seconds:300},M:{title:'Trung bình',n:12,seconds:420},K:{title:'Khó',n:15,seconds:600}};
 const STAGES=['Giải mã DNA','Khám phá nucleosome','Đóng xoắn NST','Bí mật NST','Chinh phục mật mã'];
-const STAGE_ICONS=['🧬','🔬','🧩','🧫','🏆'];
+const STAGE_ICONS=['🧬','🔬','🧵','🔎','🏆'];
 let soundOn=localStorage.getItem('mmnst_sound')!=='off',audioCtx=null;
 function playSound(kind='click'){
  if(!soundOn)return;

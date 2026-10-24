@@ -62,4 +62,128 @@ footer{color:#668780}
 .feedback:not(.warning){background:#e8f7e8;border:3px solid #43aa64;border-radius:19px;padding:18px 20px}
 .feedback strong{font-size:19px}.feedback p{line-height:1.6}
 </style>
+
+<style id="deep-ocean-theme">
+:root{color-scheme:dark;--sea:#031b35;--cyan:#39d8ed;--mint:#4fe7b4;--ink:#102342}
+body{color:#effaff;background:radial-gradient(ellipse at 52% 8%,#12617c 0%,#074463 24%,#032c4d 56%,#031629 100%);background-attachment:fixed;overflow-x:hidden}
+body::before,body::after{content:"🧬";position:fixed;z-index:-1;top:24%;font-size:clamp(170px,26vw,370px);opacity:.24;filter:drop-shadow(0 0 20px #00d6ff);pointer-events:none;line-height:1}
+body::before{left:-105px;transform:rotate(-18deg)}body::after{right:-105px;transform:rotate(20deg)}
+.wrap{max-width:1370px;padding:22px 28px 60px}
+h1{color:#c7faff;text-shadow:0 0 24px #09b7e277}h2{color:#c8fff3}
+.sub,.muted,.mini{color:#b5d7e7}
+.panel{background:linear-gradient(150deg,#063755f0,#052743f5);border:2px solid #1ba9c6;border-radius:26px;box-shadow:0 12px 40px #0005,0 0 23px #11d6ef22;padding:26px}
+#home .panel{background:#092d48}
+#home h2{color:#7cf5d8}
+#home input{background:#eaf7ff;color:#102a42;border:2px solid #49c7d6}
+#home input::placeholder{color:#657d91}
+#home .notice{background:#0a3c59;color:#e4f8ff;border:1px solid #288ba1}
+#home .rules h2{color:#73ffe3}
+#home .rules p,#home .notice{line-height:1.65}
+button{border-radius:17px;border:2px solid #36a9d9;background:linear-gradient(145deg,#0c477a,#06345c);color:#f5fdff;box-shadow:0 4px 12px #001c3455;transition:background .2s,transform .15s,box-shadow .2s}
+button:hover:not(:disabled){background:linear-gradient(145deg,#136eaa,#0c5688);box-shadow:0 4px 20px #26d3ef55;transform:translateY(-1px)}
+button:disabled{opacity:.5}
+.primary{background:linear-gradient(135deg,#28d69a,#008e78);border-color:#6bffd3;color:white;box-shadow:0 6px 18px #00e4a12e;font-weight:800}
+.primary:hover:not(:disabled){background:linear-gradient(135deg,#3af0b0,#00a688)}
+.pill{color:#f9ffff;background:linear-gradient(135deg,#083e62,#061e3b);border:2px solid #2dc6e5;box-shadow:0 0 20px #11cce544}
+#game>.panel:first-child{background:linear-gradient(160deg,#0b5871f0,#043150f5 55%,#032440f7);border-color:#10b9d1;box-shadow:0 0 24px #00dcff33}
+.game-toolbar{position:relative;min-height:78px;align-items:flex-start}
+.toolbar-left{gap:12px}
+.iconbtn{width:67px;height:67px;background:linear-gradient(140deg,#0e548a,#062b52);border:2px solid #43aaf1;border-radius:21px;font-size:30px;box-shadow:inset 0 0 16px #45ccff22,0 0 12px #00a5ff33}
+#clock{font-size:27px;font-weight:850;padding:13px 20px;font-variant-numeric:tabular-nums}
+#lives{position:absolute;top:0;left:50%;transform:translateX(-50%);white-space:nowrap;color:#67edff;font-size:36px;letter-spacing:9px;text-shadow:0 0 14px #1cd8ff}
+#levelTitle{display:inline-block;font-weight:800;font-size:21px;color:#f3ffff;margin:3px 0 8px;padding:8px 14px;background:#00294999;border-radius:15px}
+#stage{font-size:17px;color:#71ffe1;margin:3px 0 10px}
+.stage-track{margin:13px 0 15px;gap:9px;border:2px solid #15c3d4;border-radius:23px;padding:17px 11px;background:#042b47a8;box-shadow:inset 0 0 16px #00d8ef1a}
+.stage-item{color:#90b6c9;min-width:0}
+.stage-symbol{font-size:clamp(25px,3.4vw,42px);opacity:.37;filter:grayscale(1);text-shadow:none}
+.stage-item.active{color:#eaffff;font-weight:750}
+.stage-item.active .stage-symbol{opacity:1;filter:drop-shadow(0 0 12px #37ffde);transform:scale(1.13)}
+.stage-label{font-size:clamp(10px,1.2vw,15px);margin-top:9px}
+.progress{background:#32617b;height:15px;border-radius:20px}
+.progress>div{background:linear-gradient(90deg,#42edba,#20c3ed);box-shadow:0 0 12px #2affda}
+#count{font-size:21px;font-weight:750;color:#9cfce7;margin:15px 0 3px}
+#game>.panel:nth-child(2){background:linear-gradient(145deg,#f3fbff,#e4f5ff);border:3px solid #64c7f7;box-shadow:0 12px 40px #0005,0 0 20px #33d4ff44;color:var(--ink);border-radius:30px;padding:31px 34px}
+.question{font-size:clamp(21px,2.4vw,30px);color:#11264b;line-height:1.48;margin-bottom:24px}
+.option{display:flex;align-items:center;min-height:80px;background:linear-gradient(120deg,#f9feff,#e8f7ff);border:2px solid #55d3aa;border-radius:23px;color:#0c2448;font-size:clamp(17px,1.8vw,24px);padding:17px 23px;margin:15px 0;box-shadow:0 4px 11px #185a6e10}
+.option:before{width:47px;height:47px;background:#c9f6e2;color:#093452;font-size:23px;margin-right:20px}
+.option:hover:not(:disabled){background:#d8f9f4;border-color:#11bcbb}
+.option.selected{background:#d6f6fa;border-color:#00b8e4;box-shadow:0 0 0 2px #00b8e42e}
+.option.answer-wrong,.option.answer-wrong:disabled{background:#ffedec!important;border-color:#d92834!important}
+.option.answer-correct,.option.answer-correct:disabled{background:#e1f8e7!important;border-color:#269f4a!important}
+#game input,#game select{background:#fff;color:#122a45;border:2px solid #64b7cb}
+#game .matchrow,#game .orderrow{background:#e5f5fb;color:#12334c}
+#game .token{background:#cceef1;color:#17465d}
+#game .diagram{background:#e5f5ff}
+#game .notice{background:#d8f1f8;color:#18495c}
+#game .source{color:#50768d}
+#game .feedback{color:#234834}
+#game .feedback.warning{color:#603333}
+#game #check,#game #next{margin-top:19px;padding:16px 27px;font-size:19px}
+#end{color:#eaffff}
+footer{color:#b3d4e2}
+@media(max-width:760px){.wrap{padding:12px 10px 40px}.panel{padding:15px}body::before,body::after{opacity:.13}.game-toolbar{min-height:113px}.iconbtn{width:48px;height:48px;font-size:22px;border-radius:13px}#clock{font-size:20px;padding:10px 13px}#lives{top:60px;font-size:25px;letter-spacing:5px}#levelTitle{font-size:16px}.stage-track{padding:12px 4px}.stage-symbol{font-size:25px}#game>.panel:nth-child(2){padding:19px 15px}.option{min-height:64px;padding:12px;font-size:17px}.option:before{width:35px;height:35px;font-size:18px;margin-right:12px}.matchrow{grid-template-columns:1fr}#count{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
+
+<style id="deep-ocean-theme">
+:root{color-scheme:dark;--sea:#031b35;--cyan:#39d8ed;--mint:#4fe7b4;--ink:#102342}
+body{color:#effaff;background:radial-gradient(ellipse at 52% 8%,#12617c 0%,#074463 24%,#032c4d 56%,#031629 100%);background-attachment:fixed;overflow-x:hidden}
+body::before,body::after{content:"🧬";position:fixed;z-index:-1;top:24%;font-size:clamp(170px,26vw,370px);opacity:.24;filter:drop-shadow(0 0 20px #00d6ff);pointer-events:none;line-height:1}
+body::before{left:-105px;transform:rotate(-18deg)}body::after{right:-105px;transform:rotate(20deg)}
+.wrap{max-width:1370px;padding:22px 28px 60px}
+h1{color:#c7faff;text-shadow:0 0 24px #09b7e277}h2{color:#c8fff3}
+.sub,.muted,.mini{color:#b5d7e7}
+.panel{background:linear-gradient(150deg,#063755f0,#052743f5);border:2px solid #1ba9c6;border-radius:26px;box-shadow:0 12px 40px #0005,0 0 23px #11d6ef22;padding:26px}
+#home .panel{background:#092d48}
+#home h2{color:#7cf5d8}
+#home input{background:#eaf7ff;color:#102a42;border:2px solid #49c7d6}
+#home input::placeholder{color:#657d91}
+#home .notice{background:#0a3c59;color:#e4f8ff;border:1px solid #288ba1}
+#home .rules h2{color:#73ffe3}
+#home .rules p,#home .notice{line-height:1.65}
+button{border-radius:17px;border:2px solid #36a9d9;background:linear-gradient(145deg,#0c477a,#06345c);color:#f5fdff;box-shadow:0 4px 12px #001c3455;transition:background .2s,transform .15s,box-shadow .2s}
+button:hover:not(:disabled){background:linear-gradient(145deg,#136eaa,#0c5688);box-shadow:0 4px 20px #26d3ef55;transform:translateY(-1px)}
+button:disabled{opacity:.5}
+.primary{background:linear-gradient(135deg,#28d69a,#008e78);border-color:#6bffd3;color:white;box-shadow:0 6px 18px #00e4a12e;font-weight:800}
+.primary:hover:not(:disabled){background:linear-gradient(135deg,#3af0b0,#00a688)}
+.pill{color:#f9ffff;background:linear-gradient(135deg,#083e62,#061e3b);border:2px solid #2dc6e5;box-shadow:0 0 20px #11cce544}
+#game>.panel:first-child{background:linear-gradient(160deg,#0b5871f0,#043150f5 55%,#032440f7);border-color:#10b9d1;box-shadow:0 0 24px #00dcff33}
+.game-toolbar{position:relative;min-height:78px;align-items:flex-start}
+.toolbar-left{gap:12px}
+.iconbtn{width:67px;height:67px;background:linear-gradient(140deg,#0e548a,#062b52);border:2px solid #43aaf1;border-radius:21px;font-size:30px;box-shadow:inset 0 0 16px #45ccff22,0 0 12px #00a5ff33}
+#clock{font-size:27px;font-weight:850;padding:13px 20px;font-variant-numeric:tabular-nums}
+#lives{position:absolute;top:0;left:50%;transform:translateX(-50%);white-space:nowrap;color:#67edff;font-size:36px;letter-spacing:9px;text-shadow:0 0 14px #1cd8ff}
+#levelTitle{display:inline-block;font-weight:800;font-size:21px;color:#f3ffff;margin:3px 0 8px;padding:8px 14px;background:#00294999;border-radius:15px}
+#stage{font-size:17px;color:#71ffe1;margin:3px 0 10px}
+.stage-track{margin:13px 0 15px;gap:9px;border:2px solid #15c3d4;border-radius:23px;padding:17px 11px;background:#042b47a8;box-shadow:inset 0 0 16px #00d8ef1a}
+.stage-item{color:#90b6c9;min-width:0}
+.stage-symbol{font-size:clamp(25px,3.4vw,42px);opacity:.37;filter:grayscale(1);text-shadow:none}
+.stage-item.active{color:#eaffff;font-weight:750}
+.stage-item.active .stage-symbol{opacity:1;filter:drop-shadow(0 0 12px #37ffde);transform:scale(1.13)}
+.stage-label{font-size:clamp(10px,1.2vw,15px);margin-top:9px}
+.progress{background:#32617b;height:15px;border-radius:20px}
+.progress>div{background:linear-gradient(90deg,#42edba,#20c3ed);box-shadow:0 0 12px #2affda}
+#count{font-size:21px;font-weight:750;color:#9cfce7;margin:15px 0 3px}
+#game>.panel:nth-child(2){background:linear-gradient(145deg,#f3fbff,#e4f5ff);border:3px solid #64c7f7;box-shadow:0 12px 40px #0005,0 0 20px #33d4ff44;color:var(--ink);border-radius:30px;padding:31px 34px}
+.question{font-size:clamp(21px,2.4vw,30px);color:#11264b;line-height:1.48;margin-bottom:24px}
+.option{display:flex;align-items:center;min-height:80px;background:linear-gradient(120deg,#f9feff,#e8f7ff);border:2px solid #55d3aa;border-radius:23px;color:#0c2448;font-size:clamp(17px,1.8vw,24px);padding:17px 23px;margin:15px 0;box-shadow:0 4px 11px #185a6e10}
+.option:before{width:47px;height:47px;background:#c9f6e2;color:#093452;font-size:23px;margin-right:20px}
+.option:hover:not(:disabled){background:#d8f9f4;border-color:#11bcbb}
+.option.selected{background:#d6f6fa;border-color:#00b8e4;box-shadow:0 0 0 2px #00b8e42e}
+.option.answer-wrong,.option.answer-wrong:disabled{background:#ffedec!important;border-color:#d92834!important}
+.option.answer-correct,.option.answer-correct:disabled{background:#e1f8e7!important;border-color:#269f4a!important}
+#game input,#game select{background:#fff;color:#122a45;border:2px solid #64b7cb}
+#game .matchrow,#game .orderrow{background:#e5f5fb;color:#12334c}
+#game .token{background:#cceef1;color:#17465d}
+#game .diagram{background:#e5f5ff}
+#game .notice{background:#d8f1f8;color:#18495c}
+#game .source{color:#50768d}
+#game .feedback{color:#234834}
+#game .feedback.warning{color:#603333}
+#game #check,#game #next{margin-top:19px;padding:16px 27px;font-size:19px}
+#end{color:#eaffff}
+footer{color:#b3d4e2}
+@media(max-width:760px){.wrap{padding:12px 10px 40px}.panel{padding:15px}body::before,body::after{opacity:.13}.game-toolbar{min-height:113px}.iconbtn{width:48px;height:48px;font-size:22px;border-radius:13px}#clock{font-size:20px;padding:10px 13px}#lives{top:60px;font-size:25px;letter-spacing:5px}#levelTitle{font-size:16px}.stage-track{padding:12px 4px}.stage-symbol{font-size:25px}#game>.panel:nth-child(2){padding:19px 15px}.option{min-height:64px;padding:12px;font-size:17px}.option:before{width:35px;height:35px;font-size:18px;margin-right:12px}.matchrow{grid-template-columns:1fr}#count{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
 </head><body><main class="wrap"><div class="row between"><div><div class="sub">SINH HỌC 12 · KẾT NỐI TRI THỨC</div><h1>🧬 Mật mã nhiễm sắc thể</h1></div><span class="pill">Bài 7</span></div><section id="home" class="panel"><h2>Bắt đầu hành trình</h2><p class="sub">35 nhiệm vụ · 3 cấp độ · 5 DNA sinh mệnh mỗi cấp</p><div class="grid"><label>Họ và tên (có thể nhập tên ngắn)<input id="student" maxlength="90" placeholder="Ví dụ: Nguyễn Văn An"></label><label>Lớp<input id="className" maxlength="35" placeholder="Ví dụ: 12/2"></label></div><p class="muted">Không yêu cầu mã học sinh. Để giữ kết quả giữa các lần chơi, hãy dùng cùng cách ghi tên và lớp.</p><section class="notice rules" aria-label="Luật chơi"><h2>HƯỚNG DẪN CHƠI</h2><p>✓ Mỗi câu hỏi có tối đa <b>2 lượt trả lời</b>. <b>Mỗi lượt trả lời sai mất 1 DNA sinh mệnh.</b> Sai lần đầu được thử lại một lần; sai lần hai sẽ hiện đáp án đúng và giải thích.</p><p>🧬 Mỗi cấp độ bắt đầu với <b>5 DNA sinh mệnh</b>.</p><p>↻ Được chơi lại nhiều lần. Hệ thống ghi nhận <b>thành tích cao nhất</b>.</p><h2>ĐIỀU KIỆN MỞ KHÓA</h2><p><b>Cấp Dễ → Cấp Trung bình:</b> Hoàn thành 8 câu hỏi và còn ít nhất <b>3 DNA sinh mệnh</b>.</p><p><b>Cấp Trung bình → Cấp Khó:</b> Hoàn thành 12 câu hỏi và còn ít nhất <b>2 DNA sinh mệnh</b>.</p><p><b>Cấp Khó → Chiến thắng:</b> Hoàn thành 15 câu hỏi và còn ít nhất <b>1 DNA sinh mệnh</b>.</p><p class="muted">Hết thời gian hoặc mất hết DNA trước khi hoàn thành: lượt chơi không đạt. Âm thanh phát khi chọn và kiểm tra đáp án; có thể tắt bằng nút loa.</p></section><h2>CHỌN CẤP ĐỘ</h2><div class="grid" id="levels"></div><div class="notice small">Kết quả sẽ lưu trên thiết bị này. Khi giáo viên cấu hình Google Sheets, game sẽ gửi và xác minh kết quả trực tuyến.</div></section><section id="game" class="hidden"><div class="panel"><div class="game-toolbar"><div class="toolbar-left"><button id="homeBtn" class="iconbtn" title="Về trang chính" aria-label="Về trang chính">🏠</button><button id="soundBtn" class="iconbtn" title="Bật hoặc tắt âm thanh" aria-label="Bật hoặc tắt âm thanh">🔊</button></div><span id="clock" class="pill">00:00</span></div><p id="levelTitle" class="sub"></p><div id="lives" aria-label="DNA sinh mệnh"></div><p id="stage" class="sub"></p><div id="stageTrack" class="stage-track"></div><div class="progress"><div id="bar"></div></div><p id="count" class="muted"></p></div><div class="panel"><div id="qText" class="question"></div><div id="interaction"></div><div class="row"><button id="check" class="primary">Kiểm tra đáp án</button><button id="next" class="hidden primary">Câu tiếp theo →</button></div><div id="feedback"></div><div id="source" class="source"></div></div></section><section id="end" class="panel hidden center"><h2 id="endTitle"></h2><div id="endBody"></div><div class="row" style="justify-content:center"><button onclick="showHome()">Về trang chọn cấp độ</button><button class="primary" id="retry">Chơi lại</button></div></section><footer>Nội dung: ngân hàng 35 nhiệm vụ bản 3 đã duyệt · Hình vẽ trong game là sơ đồ minh họa tự dựng, không sao chép hình SGK. Giáo viên nên kiểm thử và duyệt trước khi phát cho học sinh.</footer></main><script src="config.js"></script><script src="questions.js"></script><script src="game.js"></script></body></html>
