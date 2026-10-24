@@ -62,4 +62,60 @@ footer{color:#668780}
 .feedback:not(.warning){background:#e8f7e8;border:3px solid #43aa64;border-radius:19px;padding:18px 20px}
 .feedback strong{font-size:19px}.feedback p{line-height:1.6}
 </style>
+<style>
+/* GIAO DIEN XANH DNA - chi thay doi mau sac va trang tri, khong sua luat choi */
+:root{color:#f0faff;background:#031a32}
+body{color:#e8faff;background:
+ radial-gradient(ellipse at 50% 3%,rgba(30,174,202,.39),transparent 42%),
+ radial-gradient(ellipse at 1% 63%,rgba(0,131,180,.28),transparent 35%),
+ radial-gradient(ellipse at 98% 70%,rgba(0,144,188,.25),transparent 34%),
+ linear-gradient(145deg,#06172f 0%,#07506b 44%,#061a39 80%,#03152d 100%);background-attachment:fixed}
+body:before,body:after{content:'🧬';position:fixed;z-index:0;pointer-events:none;font-size:clamp(130px,23vw,330px);opacity:.22;filter:drop-shadow(0 0 18px #00cfff);top:26%;line-height:1}
+body:before{left:-.21em;transform:rotate(-25deg)}
+body:after{right:-.2em;transform:rotate(25deg)}
+.wrap{position:relative;z-index:1;max-width:1400px}
+h1{color:#a5f4ff;text-shadow:0 0 18px #009ec680}h2{color:#a6f4ff}
+.sub,.muted,.mini{color:#b3d8e9}
+.panel{background:linear-gradient(145deg,rgba(4,49,80,.97),rgba(3,33,65,.97));border:2px solid #168eaf;border-radius:26px;box-shadow:0 14px 36px #00112270,0 0 20px #00baff20;color:#effbff}
+input,select{background:#092e4d;border:2px solid #399bc0;color:white}
+input::placeholder{color:#a5c6d8}
+button{background:linear-gradient(160deg,#145b88,#083456);border:2px solid #4aa5df;color:#fff;box-shadow:0 3px 12px #00172d55}
+button:hover:not(:disabled){background:#1676a6}
+.primary{background:linear-gradient(135deg,#2ce8a4,#008b71);border-color:#61ffcb;color:#fff;box-shadow:0 5px 15px #00e6aa30}
+.primary:hover:not(:disabled){background:#049d7b}
+.pill{background:linear-gradient(140deg,#073557,#051e3c);border:2px solid #1cb4d1;color:#fff;box-shadow:0 0 15px #05bddb25}
+.notice{background:#0a3e5b;color:#e3f8ff;border:1px solid #217f9d}
+.rules h2{color:#8afce1}
+#game .panel:first-child{background:linear-gradient(165deg,rgba(3,59,82,.95),rgba(2,37,68,.96));border:2px solid #0ab9c8;box-shadow:0 0 25px #00a5b340}
+.game-toolbar{gap:16px}
+.iconbtn{background:linear-gradient(160deg,#10588c,#06345b);border:2px solid #55a5eb;color:white;box-shadow:0 0 12px #17b5f340}
+#clock{font-size:25px;font-weight:850}
+#lives{color:#74dfff;font-size:31px;text-shadow:0 0 12px #02baf7;background:transparent}
+#stage{color:#a3fff0;font-size:19px}
+.stage-item{color:#8eb6cc}
+.stage-item.active{color:#efffff}
+.stage-symbol{filter:grayscale(1);opacity:.48}
+.stage-item.active .stage-symbol{filter:none;opacity:1;filter:drop-shadow(0 0 7px #39f3dd)}
+.progress{background:#315c7b;height:13px}
+.progress>div{background:linear-gradient(90deg,#28e8b6,#59f3e0);box-shadow:0 0 10px #33e8bf}
+#count{color:#9bfff1;font-size:18px}
+#game>.panel:nth-child(2){background:linear-gradient(145deg,#f2faff,#e0f3ff);border:3px solid #4bbcff;color:#081b3c;box-shadow:0 12px 30px #001b3e80,0 0 15px #2aa7fa55}
+.question{color:#0b1c40;font-size:clamp(21px,2.4vw,29px);font-weight:800}
+.option{background:linear-gradient(145deg,#f4fbff,#eaf7ff);border:2px solid #50d7a5;color:#0c2143;box-shadow:0 3px 10px #1c7caa16;border-radius:20px}
+.option:before{background:#c5f7e2;color:#092743}
+.option:hover:not(:disabled){background:#dffbf4;border-color:#13bd9b}
+.option.selected{background:#d4f6f1;border-color:#10afc0}
+.feedback{background:#e8f7f0;color:#164a3b}
+.feedback.warning{background:#fff0ef;color:#66342f}
+.matchrow,.orderrow{background:#e7f4fb;color:#15344b}
+.token{background:#d8f2fb;color:#15465d;border-color:#61b6d0}
+.target{border-color:#5cacc5;color:#17455d}
+.diagram{background:#eaf9ff;border-color:#53b8e0}
+.labelchip{background:#c7eff6;color:#17455d}
+.source{color:#5b819a}
+#home .sub,#end .sub{color:#b5d9ed}
+#end{background:linear-gradient(145deg,#063a62,#05243f)}
+footer{color:#acd6e5}
+@media(max-width:580px){body:before,body:after{font-size:125px;opacity:.12}.wrap{padding:12px 10px 40px}.panel{padding:17px}#clock{font-size:19px}.option{font-size:16px}}
+</style>
 </head><body><main class="wrap"><div class="row between"><div><div class="sub">SINH HỌC 12 · KẾT NỐI TRI THỨC</div><h1>🧬 Mật mã nhiễm sắc thể</h1></div><span class="pill">Bài 7</span></div><section id="home" class="panel"><h2>Bắt đầu hành trình</h2><p class="sub">35 nhiệm vụ · 3 cấp độ · 5 DNA sinh mệnh mỗi cấp</p><div class="grid"><label>Họ và tên (có thể nhập tên ngắn)<input id="student" maxlength="90" placeholder="Ví dụ: Nguyễn Văn An"></label><label>Lớp<input id="className" maxlength="35" placeholder="Ví dụ: 12/2"></label></div><p class="muted">Không yêu cầu mã học sinh. Để giữ kết quả giữa các lần chơi, hãy dùng cùng cách ghi tên và lớp.</p><section class="notice rules" aria-label="Luật chơi"><h2>HƯỚNG DẪN CHƠI</h2><p>✓ Mỗi câu hỏi có tối đa <b>2 lượt trả lời</b>. <b>Mỗi lượt trả lời sai mất 1 DNA sinh mệnh.</b> Sai lần đầu được thử lại một lần; sai lần hai sẽ hiện đáp án đúng và giải thích.</p><p>🧬 Mỗi cấp độ bắt đầu với <b>5 DNA sinh mệnh</b>.</p><p>↻ Được chơi lại nhiều lần. Hệ thống ghi nhận <b>thành tích cao nhất</b>.</p><h2>ĐIỀU KIỆN MỞ KHÓA</h2><p><b>Cấp Dễ → Cấp Trung bình:</b> Hoàn thành 8 câu hỏi và còn ít nhất <b>3 DNA sinh mệnh</b>.</p><p><b>Cấp Trung bình → Cấp Khó:</b> Hoàn thành 12 câu hỏi và còn ít nhất <b>2 DNA sinh mệnh</b>.</p><p><b>Cấp Khó → Chiến thắng:</b> Hoàn thành 15 câu hỏi và còn ít nhất <b>1 DNA sinh mệnh</b>.</p><p class="muted">Hết thời gian hoặc mất hết DNA trước khi hoàn thành: lượt chơi không đạt. Với câu trắc nghiệm, chạm đáp án sẽ chấm ngay, không cần bấm Kiểm tra đáp án. Với bài ghép, sắp xếp và điền đáp án, bấm Kiểm tra đáp án sau khi hoàn thành. Có thể tắt âm thanh bằng nút loa.</p></section><h2>CHỌN CẤP ĐỘ</h2><div class="grid" id="levels"></div><div class="notice small">Kết quả sẽ lưu trên thiết bị này. Khi giáo viên cấu hình Google Sheets, game sẽ gửi và xác minh kết quả trực tuyến.</div></section><section id="game" class="hidden"><div class="panel"><div class="game-toolbar"><div class="toolbar-left"><button id="homeBtn" class="iconbtn" title="Về trang chính" aria-label="Về trang chính">🏠</button><button id="soundBtn" class="iconbtn" title="Bật hoặc tắt âm thanh" aria-label="Bật hoặc tắt âm thanh">🔊</button></div><span id="clock" class="pill">00:00</span></div><p id="levelTitle" class="sub"></p><div id="lives" aria-label="DNA sinh mệnh"></div><p id="stage" class="sub"></p><div id="stageTrack" class="stage-track"></div><div class="progress"><div id="bar"></div></div><p id="count" class="muted"></p></div><div class="panel"><div id="qText" class="question"></div><div id="interaction"></div><div id="feedback"></div><div class="row"><button id="check" class="primary">Kiểm tra đáp án</button><button id="next" class="hidden primary">Câu tiếp theo →</button></div><div id="source" class="source"></div></div></section><section id="end" class="panel hidden center"><h2 id="endTitle"></h2><div id="endBody"></div><div class="row" style="justify-content:center"><button onclick="showHome()">Về trang chọn cấp độ</button><button class="primary" id="retry">Chơi lại</button></div></section><footer>Nội dung: ngân hàng 35 nhiệm vụ bản 3 đã duyệt · Hình vẽ trong game là sơ đồ minh họa tự dựng, không sao chép hình SGK. Giáo viên nên kiểm thử và duyệt trước khi phát cho học sinh.</footer></main><script src="config.js"></script><script src="questions.js"></script><script src="game.js"></script></body></html>
